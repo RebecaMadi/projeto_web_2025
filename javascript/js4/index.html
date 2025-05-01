@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS4</title>
+</head>
+<body>
+    <form>
+        <label>Informe o raio <input type="text" id="raio"/></label>
+        <input type="submit" value="Ok"><br>
+    </form>
+    <label>Área do círculo <input type="text" id="area" readonly/></label><br>
+    <label>Circunferência <input type="text" id="circ" readonly/></label>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const raioInput = document.getElementById("raio");
+            const areaInput = document.getElementById("area");
+            const circInput = document.getElementById("circ");
+
+
+            document.querySelector("form").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                let raio = parseFloat(raioInput.value);
+                let area = Math.PI * raio * raio;
+                let circuferencia = Math.PI * raio * 2;
+        
+                if (!isNaN(area) && !isNaN(circuferencia)) {
+                    areaInput.value = area.toFixed(2);
+                    circInput.value = circuferencia.toFixed(2);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

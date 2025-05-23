@@ -4,3 +4,6 @@ Execução typescript:
 
 Compilar: npx tsc
 Servir: npx serve .
+
+Execução game:
+npx http-server .  

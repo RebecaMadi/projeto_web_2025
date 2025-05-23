@@ -21,6 +21,10 @@ class Score {
       const formattedScore = String(this.points).padStart(6, '0');
       this.element.innerHTML = ` ${formattedScore}`;
     }
+
+    getScore() {
+      return this.points
+    }
   }
   
 export const score = new Score();

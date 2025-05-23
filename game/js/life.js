@@ -12,7 +12,9 @@ class Life {
   }
 
   remove() {
-    this.element.remove();
+    if (this.element && this.element.parentNode) {
+      this.element.parentNode.removeChild(this.element);
+    }
   }
 
 }
@@ -35,7 +37,6 @@ export const removeLife = () => {
   console.log(lives)
   const lostLife = lives.pop(); 
   if (lostLife) lostLife.remove();
-  console.log("aaaa\n")
   contLves -= 1;
 }
 

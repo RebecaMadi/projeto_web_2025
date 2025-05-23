@@ -19,3 +19,27 @@
 #lives img {
   margin-left: 5px;
 }
+
+#game-over-container {
+  position: fixed;
+  padding: 20px;
+  background-color: rgba(128, 0, 128, 0.8);
+  border: 3px solid black;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 10000;
+  color: white;
+}
+
+#max-score {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+#restart-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+

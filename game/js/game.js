@@ -5,7 +5,7 @@ import { score } from "./score.js"
 import { createRandomEnemyShip, moveEnemyShips, enemyShips } from "./enemyShip.js"
 import { createLife, removeLife, getLives } from "./life.js"
 import { isColliding } from "./utils.js"
-import { TAMX, TAMY } from "./config.js"
+import { TAMX, TAMY, MAX_SPEED } from "./config.js"
 import { createEnemyMeteor, moveEnemyMeteors, enemyMeteors } from "./enemyMeteor.js"
 import { createRandomEnemyUFO, moveEnemyUFOs, enemyUFOs } from "./enemyUFO.js"
 import { moveBullets, bullets } from "./bullet.js"
@@ -13,6 +13,8 @@ import { moveBullets, bullets } from "./bullet.js"
 let isRunning = false
 let isPaused = false
 let gameOver = false
+let multiplier = 0
+let maxScore = Number(localStorage.getItem("maxScore")) || 0;
 
 function init() {
   setInterval(run, 1000 / FPS)
@@ -23,6 +25,7 @@ window.addEventListener("keydown", (e) => {
     if (!isRunning) {
       isRunning = true
       isPaused = false
+      multiplier = 0;
       init()
     }
   }
@@ -33,8 +36,7 @@ window.addEventListener("keydown", (e) => {
     }
   }
 
-  if (e.key === " ") {
-    console.log("????")
+  if (e.key === " " && isRunning) {
     ship.shot();
   }
 
@@ -125,30 +127,46 @@ function reset(){
   if (getLives() < 0) {
     gameOver = true;
     alert("Game Over! :(");
-    
+
+    maxScore = Math.max(maxScore, score.getScore());
+    localStorage.setItem("maxScore", maxScore);
+
+    const container = document.createElement("div");
+    container.id = "game-over-container";
+    container.style.top = `${TAMY / 2 - 100}px`;
+    container.style.left = `${TAMX / 2 - 100}px`;
+
+    const scoreSpan = document.createElement("span");
+    scoreSpan.id = "max-score";
+    scoreSpan.textContent = `Max Score: ${maxScore}`;
+
     const restartBtn = document.createElement("button");
+    restartBtn.id = "restart-button";
     restartBtn.textContent = "Reiniciar Jogo";
-    restartBtn.style.position = "fixed";
-    restartBtn.style.top = `${TAMY / 2 - 50}px`
-    restartBtn.style.left = `${TAMX / 2 - 70}px`
-    restartBtn.style.padding = "10px 20px";
-    restartBtn.style.fontSize = "18px";
-    restartBtn.style.zIndex = "10000";
-    
-    space.element.appendChild(restartBtn);
-    
+
+    container.appendChild(scoreSpan);
+    container.appendChild(restartBtn);
+    space.element.appendChild(container);
+
     restartBtn.addEventListener("click", () => {
+      space.element.style.filter = "none";
+      const container = document.getElementById("game-over-container");
+      if (container) container.remove(); 
       window.location.reload();
       isRunning = false;
       isPaused = false;
       gameOver = false;
+      multiplier = 0;
     });
   }
 }
 
+
+
 function start(){
   if(!isRunning && !isPaused){
     createLife()
+    multiplier = 0;
     console.log("init\n")
   }
 }
@@ -164,14 +182,19 @@ function run() {
   createRandomEnemyShip()
   createEnemyMeteor()
   createRandomEnemyUFO()
-  moveEnemyMeteors()
-  moveEnemyShips()
-  moveEnemyUFOs()
+  moveEnemyMeteors(multiplier)
+  moveEnemyShips(multiplier)
+  moveEnemyUFOs(multiplier)
   moveBullets()
   colllisionsEnemies()
   checkBulletHits()
 
-  
+  setInterval(() => {
+    multiplier += 1
+    if(multiplier < MAX_SPEED) console.log(`Velocidade média aumentada em ${multiplier}`)
+    else console.log(`Velocidade média igual a velocidade máxima`)
+  }, 60000)
+
   reset();
   console.log("Ue\n");
 }

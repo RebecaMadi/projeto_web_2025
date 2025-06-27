@@ -1,0 +1,43 @@
+@use 'about';
+
+@use 'hb1';
+
+@use 'major';
+
+@use 'modal';
+
+@use 'create';
+
+@use 'buttons';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.main-btn {
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.main-btn:hover {
+  background: #256429;
+}

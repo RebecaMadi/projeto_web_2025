@@ -1,0 +1,58 @@
+<section>
+   
+  <table>
+    <caption>
+        <div class="caption-row">
+            <span class="caption-title">Lista de Usuários</span>
+            <a href="/user/create" class="btn-add-major" title="Adicionar novo curso">
+            <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </caption>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Curso</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr>
+          <td>{{this.user.name}}</td>
+          <td>{{this.user.email}}</td>
+          <td>{{this.major.name}}</td>
+          <td>
+            <a href="/user/update/{{this.user.id}}" title="Editar"><i class="fas fa-pencil-alt icon"></i></a>
+            <a href="/user/read/{{this.user.id}}" title="Visualizar"><i class="fas fa-eye icon"></i></a>
+            <form id="form-remove-{{this.user.id}}" action="/user/remove/{{this.user.id}}" method="POST" style="display:inline;">
+                <button type="button"
+                class="icon-btn"
+                title="Excluir"
+                onclick="confirmDeletar('{{this.user.id}}', '{{this.user.name}}')"
+                style="background:none;border:none;padding:0;cursor:pointer;">
+                <i class="fas fa-trash-alt icon"></i>
+                </button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>
+
+<script src="/js/modal.js"></script>
+
+<!-- Modal de confirmação -->
+<div id="modal-confirm" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <h2>Confirmar deleção</h2>
+    <p id="modal-msg">Deseja mesmo apagar este usuário?</p>
+    <div class="modal-actions">
+      <button onclick="fecharModal()">Fechar</button>
+      <button id="btn-confirmar" class="btn-confirmar">Sim, apagar usuário</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+.btn-add-major {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: none;
+  padding: 0;
+}
+
+.btn-add-major:hover {
+  background: #222;
+  color: #fff;
+  border-color: #125ea2;
+}
+
+.btn-add-major i {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: none;
+  padding: 0;
+}
+
+.btn-back:hover {
+  background: #222;
+  color: #fff;
+  border-color: #125ea2;
+}

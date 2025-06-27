@@ -1,0 +1,20 @@
+<form action="/user/update/{{user.id}}" method="post" class="form-curso">
+  <h1 class="form-title">Atualizar usuário</h1>
+  <div class="form-group">
+    <label for="name">Nome do usuário</label>
+    <input type="text" id="name" name="name" value="{{user.name}}" class="form-control" placeholder="Nome do usuário">
+  </div>
+  <div class="form-group">
+    <label for="email">Email do usuário</label>
+    <input type="text" id="email" name="email" value="{{user.email}}" class="form-control" placeholder="Email do usuário">
+  </div>
+  <div class="form-group">
+    <label for="majorId">Curso</label>
+    <select id="majorId" name="majorId" required>
+      {{#each majors}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Atualizar usuário</button>
+</form>

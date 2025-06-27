@@ -1,0 +1,265 @@
+.about-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-color: #222;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.5em;
+}
+
+#header {
+  color: #4D926F;
+}
+
+h2 {
+  color: #4D926F;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em auto;
+  font-size: 1em;
+  background: #f5f5f5;
+  color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 95vw;
+}
+
+.caption-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+  max-width: 95vw;
+}
+
+.caption-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #2a7a5e;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.75em 1em;
+  text-align: left;
+}
+
+th {
+  background: #e0e0e0;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f7fa;
+}
+
+tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+tbody tr:hover {
+  background: #d0ebff;
+  transition: background 0.2s;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  color: #222;
+  padding: 2em;
+  border-radius: 10px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.btn-confirmar {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-confirmar:hover {
+  background: #125ea2;
+}
+
+.form-title {
+  color: #388e3c;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.form-curso {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.2em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3em;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.6em 0.8em;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1em;
+  background: #fafbfc;
+  color: #222;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #1976d2;
+  background: #fff;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.5em;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #125ea2;
+}
+
+.btn-add-major {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: none;
+  padding: 0;
+}
+
+.btn-add-major:hover {
+  background: #222;
+  color: #fff;
+  border-color: #125ea2;
+}
+
+.btn-add-major i {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: none;
+  padding: 0;
+}
+
+.btn-back:hover {
+  background: #222;
+  color: #fff;
+  border-color: #125ea2;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.main-btn {
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.main-btn:hover {
+  background: #256429;
+}
+
+/*# sourceMappingURL=main.css.map */

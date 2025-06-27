@@ -1,0 +1,28 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const main_1 = __importDefault(require("../controllers/main"));
+const major_1 = __importDefault(require("../controllers/major"));
+const user_1 = __importDefault(require("../controllers/user"));
+const router = (0, express_1.Router)();
+router.get('/', main_1.default.index);
+router.get('/about', main_1.default.about);
+router.get('/lorem/:num', main_1.default.lorem);
+router.get('/hb1', main_1.default.hb1);
+router.get('/hb2', main_1.default.hb2);
+router.get('/hb3', main_1.default.hb3);
+router.get('/hb4', main_1.default.hb4);
+router.get('/major', major_1.default.index);
+router.all('/major/create', major_1.default.create);
+router.get('/major/read/:id', major_1.default.read);
+router.all('/major/update/:id', major_1.default.update);
+router.post('/major/remove/:id', major_1.default.remove);
+router.get('/user', user_1.default.index);
+router.all('/user/create', user_1.default.create);
+router.get('/user/read/:id', user_1.default.read);
+router.all('/user/update/:id', user_1.default.update);
+router.post('/user/remove/:id', user_1.default.remove);
+exports.default = router;

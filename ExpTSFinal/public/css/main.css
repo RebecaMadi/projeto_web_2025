@@ -302,6 +302,40 @@ tbody tr:hover {
   font-size: 0.98em;
 }
 
+caption.ranking-title {
+  caption-side: top;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #388e3c;
+  margin-bottom: 1em;
+}
+
+.ranking-table {
+  margin: 0 auto;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+.ranking-table th, .ranking-table td {
+  text-align: center;
+  font-size: 1.1em;
+}
+.ranking-table th {
+  background: #388e3c;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.ranking-table tr:nth-child(even) {
+  background: #f5f5f5;
+}
+.ranking-table tr:hover {
+  background: #e8f5e9;
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -332,6 +366,15 @@ html, body {
 
 .main-btn:hover {
   background: #256429;
+}
+
+caption {
+  caption-side: top;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #388e3c;
+  margin-bottom: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */

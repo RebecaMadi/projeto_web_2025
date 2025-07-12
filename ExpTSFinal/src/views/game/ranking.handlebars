@@ -1,0 +1,19 @@
+<table class="table table-striped ranking-table">
+  <caption class="ranking-title">Ranking dos Melhores Jogadores</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Pontuação Máxima</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+      <tr>
+        <td>{{inc @index}}</td>
+        <td>{{this.Nome}}</td>
+        <td>{{this.maxScore}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

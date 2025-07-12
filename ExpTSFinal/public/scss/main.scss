@@ -12,6 +12,8 @@
 
 @use 'login';
 
+@use 'ranking';
+
 html, body {
   height: 100%;
   width: 100%;
@@ -42,4 +44,13 @@ html, body {
 
 .main-btn:hover {
   background: #256429;
+}
+
+caption {
+  caption-side: top;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #388e3c;
+  margin-bottom: 1em;
 }

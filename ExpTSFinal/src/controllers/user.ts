@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { createUser, getAllUsers, deleteUser, updateUser, getUserById, updateUserPass } from '../services/user'
+import { createUser, getAllUsers, deleteUser, updateUser, getUserById, updateUserPass, getScore } from '../services/user'
 import { userSchema, userUpdateSchema } from '../types/schema';
 import { getAllMajors, getMajorById } from '../services/major';
 import { requireAuth } from '../services/gameSession';
@@ -7,9 +7,6 @@ import { requireAuth } from '../services/gameSession';
 const index = async (req: Request, res: Response) => {
     try {
         const auth = await requireAuth(req, res);
-        if(auth) {
-            return res.redirect('/');
-        }
 
         const users = await getAllUsers();
         const majors = await getAllMajors();
@@ -18,7 +15,7 @@ const index = async (req: Request, res: Response) => {
             user,
             major: majors.find(m => m.id === user.majorId)
         }));
-        res.render('user/index', { users: usersWithMajors });
+        res.render('user/index', { user: auth, users: usersWithMajors });
     } catch (err) {
         res.status(500).send(err);
     }
@@ -128,4 +125,20 @@ const remove = async (req: Request, res: Response) => {
     }
 }
 
-export default { updatePassword, index, create, read, update, remove };
+const ranking = async (req: Request, res: Response) => {
+    try {
+        const users = await getAllUsers();
+        let usersWithScores = await Promise.all(users.map(async user => ({
+            Nome: user.name,
+            maxScore: await getScore(user.id)
+        })));
+
+        usersWithScores = usersWithScores.sort((a, b) => b.maxScore - a.maxScore);  
+        usersWithScores = usersWithScores.slice(0, 10);
+        res.render('game/ranking', { users: usersWithScores });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+}
+
+export default { updatePassword, ranking, index, create, read, update, remove };

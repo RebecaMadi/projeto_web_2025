@@ -13,3 +13,7 @@ export function listTechs(techs: Tecnologia[]) {
   );
   return `<ul class="node-tech-list">${items.join('')}</ul>`;
 }
+
+export function inc(value: string): number {
+  return parseInt(value) + 1;
+}

@@ -2,17 +2,16 @@ import { Request, Response } from 'express'
 import { createMajor, getAllMajors, deleteMajor, updateMajor, getMajorById } from '../services/major'
 import { majorSchema } from '../types/schema';
 import { requireAuth } from '../services/gameSession';
+import user from './user';
 
 const index = async (req: Request, res: Response) => {
     // Handle GET request to list all majors
     const auth = await requireAuth(req, res);
-    if(auth) {
-        return res.redirect('/');
-    }
+
     if (req.method === 'GET') {
         getAllMajors()
             .then(majors => {
-                res.render('major/index', { majors })
+                res.render('major/index', { majors, user: auth });
             })
             .catch(err => {
                 res.status(500).send(err)

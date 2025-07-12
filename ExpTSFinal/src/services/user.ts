@@ -69,3 +69,17 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
         }
     });
 }
+
+
+export const getScore = async (userId: string): Promise<number> => {
+    const sessions = await prisma.game_session.findMany({
+        where: { userId },
+        orderBy: { score: 'desc' },
+        take: 1
+    });
+    if (sessions.length === 0) {
+        return 0;
+    }
+    const highestScore = sessions[0].score;
+    return highestScore
+}

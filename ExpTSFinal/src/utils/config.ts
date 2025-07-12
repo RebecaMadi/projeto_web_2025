@@ -1,0 +1,1 @@
+export const sessionDuration = 10 * 60 * 1000; // 1 hour in milliseconds

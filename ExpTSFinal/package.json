@@ -1,0 +1,43 @@
+{
+  "name": "expts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts",
+    "build": "tsc",
+    "start:prod": "node build/index.js",
+    "sass": "sass public/scss/main.scss public/css/main.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.6.0",
+    "envalid": "^8.0.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "express-session": "^1.18.1",
+    "joi": "^17.13.3",
+    "lorem-ipsum": "^2.0.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
+    "sass": "^1.89.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.0.4",
+    "@types/uuid": "^10.0.0",
+    "prisma": "^6.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

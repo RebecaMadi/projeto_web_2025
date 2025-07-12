@@ -1,0 +1,16 @@
+<form action="/major/update/{{major.id}}" method="post" class="form-curso">
+  <h1 class="form-title">Atualizar curso</h1>
+  <div class="form-group">
+    <label for="code">Código do curso</label>
+    <input type="text" id="code" name="code" class="form-control" value="{{major.code}}" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Nome do curso</label>
+    <input type="text" id="name" name="name" class="form-control" value="{{major.name}}" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Descrição</label>
+    <textarea id="description" name="description" class="form-control" rows="3">{{major.description}}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Atualizar curso</button>
+</form>

@@ -1,0 +1,28 @@
+<form action="/user/create" method="post" class="form-curso">
+  <h1 class="form-title">Criação de usuários</h1>
+  <div class="form-group">
+    <label for="name">Nome completo</label>
+    <input type="text" id="name" name="name" class="form-control" placeholder="Nome do usuário" required>
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email"  class="form-control" placeholder="Email do usuário" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Senha</label>
+    <input type="password" id="password" name="password"  class="form-control" placeholder="********" required minlength="6">
+  </div>
+  <div class="form-group">
+    <label for="repeatPassword">Repetir senha</label>
+    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="********" required minlength="6">
+  </div>
+  <div class="form-group">
+    <label for="majorId">Curso</label>
+    <select id="majorId" name="majorId" required>
+      {{#each majors}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

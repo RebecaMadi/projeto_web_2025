@@ -1,0 +1,43 @@
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  color: #222;
+  padding: 2em;
+  border-radius: 10px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 1em; top: 1em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 2em;
+}
+.btn-confirmar {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-confirmar:hover {
+  background: #125ea2;
+}

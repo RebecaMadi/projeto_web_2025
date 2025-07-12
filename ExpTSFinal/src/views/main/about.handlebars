@@ -1,0 +1,11 @@
+<div class="about-container">
+  <h1>{{title}}</h1>
+  <p>{{description}}</p>
+  {{#each images}}
+    <img
+      src="{{this.url}}"
+      alt="{{this.alt}}"
+      style="width: 440px; height: 400px; margin: 1em;"
+    />
+  {{/each}}
+</div>

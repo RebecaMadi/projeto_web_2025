@@ -1,7 +1,7 @@
-let majorIdToDelete = null;
+let userIdToDelete = null;
 
 function confirmDeletar(id, nome) {
-    majorIdToDelete = id;
+    userIdToDelete = id;
     document.getElementById('modal-msg').innerHTML =
         `Deseja mesmo apagar o curso <strong>${nome}</strong>?`;
     document.getElementById('modal-confirm').style.display = 'flex';
@@ -9,14 +9,14 @@ function confirmDeletar(id, nome) {
 
 function fecharModal() {
     document.getElementById('modal-confirm').style.display = 'none';
-    majorIdToDelete = null;
+    userIdToDelete = null;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('btn-confirmar').onclick = async function() {
-        if (majorIdToDelete) {
+        if (userIdToDelete) {
             try {
-                const response = await fetch(`/major/remove/${majorIdToDelete}`, {
+                const response = await fetch(`/user/remove/${userIdToDelete}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
                 if (response.ok) {
-                    const row = document.getElementById('row-' + majorIdToDelete);
+                    const row = document.getElementById('row-' + userIdToDelete);
                     if (row) row.remove();
                     window.location.reload();
                 } else {

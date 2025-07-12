@@ -33,6 +33,8 @@ app.use(session({
   cookie: { maxAge: sessionDuration }
 }));
 app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
 app.engine("handlebars", engine({

@@ -31,6 +31,6 @@ router.post('/user/remove/:id',  authMiddleware, userController.remove)
 router.all('/user/updatePass/:id', authMiddleware, userController.updatePassword);
 
 router.get('/game', authMiddleware, mainController.game);
-
+router.post('/game/update-score', authMiddleware, mainController.updateGameSessionScore);
 router.get('/logout', authMiddleware, mainController.logout);
 export default router;

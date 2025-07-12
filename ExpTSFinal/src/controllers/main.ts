@@ -3,11 +3,10 @@ import { generateLorem } from '../utils/lorem';
 import bcrypt from 'bcryptjs';
 import { getUserByEmail, getUserById } from '../services/user';
 import { CustomSession } from '../types/session';
-import { getRecentGameSession, createGameSession, requireAuth } from '../services/gameSession';
+import { getRecentGameSession, createGameSession, requireAuth, getGameSessionById, updateGameSession } from '../services/gameSession';
 import { isSessionValid } from '../middlewares/middlewares';
 import { sessionDuration } from '../utils/config';
 import { v4 as uuidv4 } from 'uuid';
-import session from 'express-session';
 
 const loginPost = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -83,6 +82,26 @@ const  game = async (req: Request, res: Response) => {
         sessionId: req.session.uid,
     });
 }
+
+export const updateGameSessionScore = async (req: Request, res: Response) => {
+  console.log('Atualizando score da sessão de jogo', req.body);
+  const { sessionId, score } = req.body;
+
+  if (!sessionId || typeof score !== 'number') {
+    return res.status(400).json({ error: 'Dados inválidos.' });
+  }
+  try {
+    const session = await getGameSessionById(sessionId);
+    if (!session) return res.status(404).json({ error: 'Sessão não encontrada.' });
+
+    const maxScore = Math.max(session.score, score);
+    await updateGameSession(sessionId, maxScore);
+
+    res.json({ success: true, maxScore });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao atualizar score.' });
+  }
+};
 
 const about = (req: Request, res: Response) => {
     res.render('main/about', {
@@ -160,4 +179,4 @@ const logout = (req: Request, res: Response) => {
   });
 };
 
-export default {logout, game, home, loginPost, index2, login, about, hb1, hb2, hb3, hb4, lorem };
+export default {logout, updateGameSessionScore, game, home, loginPost, index2, login, about, hb1, hb2, hb3, hb4, lorem };

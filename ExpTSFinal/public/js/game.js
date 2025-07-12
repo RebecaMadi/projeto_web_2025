@@ -131,6 +131,19 @@ function reset(){
     maxScore = Math.max(maxScore, score.getScore());
     localStorage.setItem("maxScore", maxScore);
 
+    const sessionId = window.sessionId;
+    fetch('/game/update-score', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId, score: score.getScore() })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        console.log('Score atualizado no servidor:', data.maxScore);
+      }
+    });
+
     const container = document.createElement("div");
     container.id = "game-over-container";
     container.style.top = `${TAMY / 2 - 100}px`;
@@ -162,7 +175,6 @@ function reset(){
 }
 
 
-
 function start(){
   if(!isRunning && !isPaused){
     createLife()
@@ -174,7 +186,10 @@ function start(){
 function run() {
   start()
 
-  if (!isRunning || isPaused || gameOver) return
+  if (!isRunning || isPaused || gameOver){
+
+    return
+  }
 
   space.move()
   ship.move()
